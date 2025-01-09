@@ -1,3 +1,11 @@
+/* ----- CUSTOM PROPERTIES -----*/
+
+:root {
+    --clr-blue-900: 230 35% 7%;
+    --clr-blue-300: 231 77% 90%;
+    --clr-white: 0 0% 100%;
+}
+
 /* ----- RESET -----*/
 
 /* Box sizing rules */
@@ -105,3 +113,11 @@ textarea:not([rows]) {
     white-space: nowrap;
     border: 0;
 }
+
+.bg-blue-900 { background-color: hsl(var(--clr-blue-900)); }
+.bg-blue-300 { background-color: hsl(var(--clr-blue-300)); }
+.bg-white { background-color: hsl(var(--clr-white)); }
+
+.text-blue-900 { color: hsl(var(--clr-blue-900)); }
+.text-blue-300 { color: hsl(var(--clr-blue-300)); }
+.text-white { color: hsl(var(--clr-white)); }
