@@ -1,6 +1,5 @@
 /* ----- RESET -----*/
 
-
 /* Box sizing rules */
 *,
 *::before,
@@ -75,3 +74,33 @@ textarea:not([rows]) {
   scroll-margin-block: 5ex;
 }
 
+
+/* ----- Utility Classes -----*/
+
+.flex {
+    display: flex;
+    gap: var(--gap, 1rem);
+}
+
+.grid {
+    display: grid;
+    gap: var(--gap, 1rem);
+}
+
+.container {
+    padding-inline: 2rem;
+    margin-inline: auto;
+    max-width: 80rem;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+    border: 0;
+}
