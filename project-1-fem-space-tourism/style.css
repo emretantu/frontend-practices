@@ -20,6 +20,21 @@
   --ff-serif: "Bellefair", serif;
   --ff-sans-cond: "Barlow Condensed", sans-serif;
   --ff-sans: "Barlow", sans-serif;
+
+  /* spaces */
+  --space-1600: 8rem;
+  --space-1200: 6rem;
+  --space-1000: 5rem;
+  --space-800: 4rem;
+  --space-600: 3rem;
+  --space-500: 2.5rem;
+  --space-400: 2rem;
+  --space-300: 1.5rem;
+  --space-200: 1rem;
+  --space-150: 0.75rem;
+  --space-100: 0.5rem;
+  --space-50: 0.25rem;
+  --space-25: 0.125rem;
 }
 
 /* ----- RESET -----*/
