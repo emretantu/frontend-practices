@@ -182,6 +182,10 @@ textarea:not([rows]) {
 
 .uppercase { text-transform: uppercase; }
 
+/* ----- COMPONENTS & PRESETS -----*/
+
+/* text presets */
+
 .text-preset-1 {
   font-family: var(--ff-serif);
   font-size: var(--fs-900);
@@ -244,3 +248,39 @@ textarea:not([rows]) {
   line-height: 2.8;
   letter-spacing: 0;
 }
+
+/*tablet*/
+@media screen and (max-width: 78rem) {
+  :root {
+    --fs-800: 5rem;
+    --fs-700: 2.5rem;
+    --fs-600: 1.5rem;
+    --fs-500: 1.25rem;
+    --fs-400: 1rem;
+  }
+}
+
+/*mobile*/
+@media screen and (max-width: 48rem) {
+  :root {
+    --fs-900: 5rem;
+    --fs-800: 3.5rem;
+    --fs-700: 1.5rem;
+    --fs-600: 1.125rem;
+    --fs-500: 1rem;
+    --fs-300: 0.875rem;
+    --fs-400: 0.94rem;
+  }
+}
+
+
+
+/*tablet*/
+/*@media screen and (max-width: 78rem) {
+  
+}*/
+
+/*mobile*/
+/*@media screen and (max-width: 48rem) {
+
+}*/
