@@ -20,6 +20,21 @@
   --ff-serif: "Bellefair", serif;
   --ff-sans-cond: "Barlow Condensed", sans-serif;
   --ff-sans: "Barlow", sans-serif;
+
+  /* spaces */
+  --space-1600: 8rem;
+  --space-1200: 6rem;
+  --space-1000: 5rem;
+  --space-800: 4rem;
+  --space-600: 3rem;
+  --space-500: 2.5rem;
+  --space-400: 2rem;
+  --space-300: 1.5rem;
+  --space-200: 1rem;
+  --space-150: 0.75rem;
+  --space-100: 0.5rem;
+  --space-50: 0.25rem;
+  --space-25: 0.125rem;
 }
 
 /* ----- RESET -----*/
@@ -60,6 +75,8 @@ body {
   font-size: var(--fs-400);
   line-height: 2.8;
   letter-spacing: 0;
+  /* temporary */
+  background-color: hsl(var(--clr-blue-900));
 }
 
 /* Set shorter line heights on headings and interactive elements */
@@ -167,6 +184,10 @@ textarea:not([rows]) {
 
 .uppercase { text-transform: uppercase; }
 
+/* ----- COMPONENTS & PRESETS -----*/
+
+/* text presets */
+
 .text-preset-1 {
   font-family: var(--ff-serif);
   font-size: var(--fs-900);
@@ -229,3 +250,86 @@ textarea:not([rows]) {
   line-height: 2.8;
   letter-spacing: 0;
 }
+
+/*tablet*/
+@media screen and (max-width: 78rem) {
+  :root {
+    --fs-800: 5rem;
+    --fs-700: 2.5rem;
+    --fs-600: 1.5rem;
+    --fs-500: 1.25rem;
+    --fs-400: 1rem;
+  }
+}
+
+/*mobile*/
+@media screen and (max-width: 48rem) {
+  :root {
+    --fs-900: 5rem;
+    --fs-800: 3.5rem;
+    --fs-700: 1.5rem;
+    --fs-600: 1.125rem;
+    --fs-500: 1rem;
+    --fs-300: 0.875rem;
+    --fs-400: 0.94rem;
+  }
+}
+
+/* display button */
+
+.display-button {
+  position: relative;
+  z-index: 0;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  width: 17rem;
+  height: 17rem;
+  text-decoration: none;
+  background-color: hsl(var(--clr-white));
+  color: var(--clr-blue-900);
+}
+
+.display-button::after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  border-radius: 50%;
+  content: '';
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  transition: background-color 500ms, scale 500ms, color 500ms;
+}
+
+.display-button:hover,
+.display-button:focus {
+  color: hsl(var(--clr-blue-900) / .5);
+}
+
+.display-button:hover::after,
+.display-button:focus::after {
+  scale: 1.65;
+  background-color: hsl(var(--clr-white) / .1);
+}
+
+/*mobile*/
+@media screen and (max-width: 48rem) {
+  .display-button {
+    width: 9rem;
+    height: 9rem;
+  }
+}
+
+
+/*tablet*/
+/*@media screen and (max-width: 78rem) {
+  
+}*/
+
+/*mobile*/
+/*@media screen and (max-width: 48rem) {
+
+}*/
