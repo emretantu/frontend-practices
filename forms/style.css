@@ -1,0 +1,189 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Standard Version */
+
+.standard-form {
+  display: grid;
+  grid-template-columns: min-content 1fr;
+  gap: 10px;
+  align-items: center;
+}
+
+.standard-form > label {
+  font-weight: bold;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.standard-form > input {
+  padding: 10px;
+  border-radius: 4px;
+}
+
+.standard-form > #username, .standard-form > #password {
+  border: 1px solid #ccc;
+  outline-color: blueviolet;
+}
+
+.standard-form > input[type=submit] {
+  grid-column: span 2;
+  background-color: blueviolet;
+  color: white;
+  border: none;
+  font-weight: bold;
+  justify-content: space-between;
+}
+
+/* Modern Version */
+
+.modern-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 300px;
+}
+
+.modern-form > input {
+  box-sizing: border-box;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+.modern-form > #username, .modern-form > #password {
+  outline-color: blueviolet;
+  border: 1px solid #ccc;
+}
+
+.modern-form > input[type=submit] {
+  background-color: blueviolet;
+  color: white;
+  font-weight: bold;
+  border: none;
+}
+
+.modern-form > input[type=submit]:hover {
+  background-color: rgb(105, 30, 175);
+  cursor: pointer;
+}
+
+.modern-form > input[type=submit]:active {
+  background-color: rgb(67, 16, 114);
+}
+
+/* Sign Up Form */
+
+.sign-up-form {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 10px;
+  width: 400px;
+  align-items: center;
+  font-size: 0.9rem;
+}
+
+.sign-up-form > #name {
+  grid-column: span 6;
+}
+
+.sign-up-form > #lastname {
+  grid-column: span 6;
+}
+
+.sign-up-form > #email {
+  grid-column: span 12;
+}
+
+.sign-up-form > #tel {
+  grid-column: span 12;
+}
+
+.sign-up-form > #password {
+  grid-column: span 6;
+}
+
+.sign-up-form > #password-repeat {
+  grid-column: span 6;
+}
+
+.sign-up-form > label[for=dob] {
+  grid-column: span 4;
+}
+
+.sign-up-form > #dob {
+  grid-column: span 8;
+}
+
+.sign-up-form > #gender,
+.sign-up-form > .radio-button,
+.sign-up-form > #languages,
+.sign-up-form > .checkbox {
+  grid-column: span 3;
+}
+
+.sign-up-form > #languages {
+  grid-column: span 3;
+}
+
+.sign-up-form > label[for=nation] {
+  grid-column: span 4;
+}
+
+.sign-up-form > #nation {
+  grid-column: span 8;
+}
+
+.sign-up-form > label[for=pp] {
+  grid-column: span 6;
+}
+
+.sign-up-form > #pp {
+  grid-column: span 6;
+  border: none !important;
+}
+
+.sign-up-form > #about {
+  grid-column: span 12;
+  height: 100px;
+}
+
+.sign-up-form > input[type=submit] {
+  grid-column: span 12;
+}
+
+.sign-up-form > input,
+.sign-up-form > select,
+#about {
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.sign-up-form input:not([type=submit]), #about, #nation{
+  outline-color: blueviolet;
+  accent-color: blueviolet;
+}
+
+.sign-up-form > div {
+  display: inline-flex;
+  align-items: baseline;
+  justify-content: end;
+  gap: 4px;
+}
+
+.sign-up-form > input[type=submit] {
+  background-color: blueviolet;
+  color: white;
+  font-weight: bold;
+  border: none;
+}
+
+.sign-up-form > input[type=submit]:hover {
+  background-color: rgb(105, 30, 175);
+  cursor: pointer;
+}
+
+.sign-up-form > input[type=submit]:active {
+  background-color: rgb(67, 16, 114);
+}

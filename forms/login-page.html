@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Page</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Standard Version -->
+  
+  <div style="width: 300px;">
+    <form action="#" method="post" class="standard-form">
+      <label for="username">Username</label>
+      <input type="text" name="username" id="username">
+      <label for="password">Password</label>
+      <input type="password" name="password" id="password">
+      <input type="submit" value="Log In">
+    </form>
+  </div>
+
+  <br><br><br>
+
+  <!-- Modern Version -->
+
+  <form action="#" method="" class="modern-form">
+    <input type="text" placeholder="Username" required name="username" id="username">
+    <input type="password" placeholder="Password" required name="password" id="password">
+    <input type="submit" value="Log In">
+  </form>
+
+  <br><br><br>
+
+  <!-- Sign Up Form -->
+  <form action="#" class="sign-up-form">
+    <input type="text" placeholder="Name" name="name" id="name">
+    <input type="text" placeholder="Last Name" name="lastname" id="lastname">
+    <input type="email" placeholder="Email" name="email" id="email">
+    <input type="tel" placeholder="Phone Number" name="tel" id="tel">
+    <input type="password" placeholder="Password" name="password" id="password">
+    <input type="password" placeholder="Repeat Password" name="password-repeat" id="password-repeat">
+    <label for="dob">Date Of Birth</label>
+    <input type="date" name="dob" id="dob">
+    <p id="gender">Gender</p>
+    <div class="radio-button">
+      <input type="radio" name="gender" id="woman" value="Woman">
+      <label for="woman">Woman</label>
+    </div>
+    <div class="radio-button">
+      <input type="radio" name="gender" id="man" value="Man">
+      <label for="man">Man</label>
+    </div>
+    <div class="radio-button">
+      <input type="radio" name="gender" id="other" value="Other">
+      <label for="other">Other</label>
+    </div>
+    <p id="languages">Languages</p>
+    <div class="checkbox">
+      <input type="checkbox" name="turkish" id="turkish">
+      <label for="Turkish">Turkish</label>
+    </div>
+    <div class="checkbox">
+      <input type="checkbox" name="english" id="english">
+      <label for="english">English</label>
+    </div>
+    <div class="checkbox">
+      <input type="checkbox" name="german" id="german">
+      <label for="german">German</label>
+    </div>
+    <label for="nation">Nationality</label>
+    <select name="nation" id="nation">
+      <option value="turkiye">Turkiye</option>
+      <option value="usa">USA</option>
+      <option value="uk">UK</option>
+    </select>
+    <label for="pp">Upload Your Profile Picture</label>
+    <input type="file" name="pp" id="pp">
+    <textarea placeholder="Briefly About You" name="about" id="about"></textarea>
+    <input type="submit" value="Sign Up">
+  </form>
+
+</body>
+</html>
