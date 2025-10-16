@@ -8,13 +8,19 @@ const todoList = document.querySelector(".todo-list");
 renderList();
 
 todoList.addEventListener("click", event => {
-  let index = event.target.closest(".todo-item").dataset.id;
+  let todoItem = event.target.closest(".todo-item");
+  let index = todoItem.dataset.id;
+  console.log(todoItem)
   if(event.target.closest(".delete-button")){
-    todos.splice(index, 1);
+    todoItem.style.animationPlayState = "running";
+    todoItem.addEventListener("animationend", () => {
+      todos.splice(index, 1);
+      renderList();
+    });
   } else {
     todos[index].completed = !todos[index].completed;
+    renderList();
   }
-  renderList();
 });
 
 todoForm.addEventListener("submit", e => {

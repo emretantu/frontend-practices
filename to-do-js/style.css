@@ -58,7 +58,7 @@ h1 {
   text-align: center;
   font-size: 3rem;
   color: rgb(225, 241, 255);
-  text-shadow: 0 0 2px rgb(255, 255, 255), 0 0 8px rgb(194, 226, 255, 0.4), 0 0 16px rgba(107, 183, 255, 0.1);
+  text-shadow: 0 0 2px rgb(255, 255, 255), 0 0 8px rgba(194, 226, 255, 0.4), 0 0 16px rgba(107, 183, 255, 0.1);
 }
 
 .todo-app {
@@ -135,8 +135,9 @@ h1 {
   gap: 5px;
 }
 
-.todo-list > li {
+.todo-item {
   width: 100%;
+  max-height: 400px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -147,15 +148,21 @@ h1 {
   border-radius: 1000px;
   cursor: pointer;
   transition: 1s background-color;
+  animation: 2s deleting paused;
 }
 
-.todo-list > li:hover {
+.completed {
+  text-decoration: line-through;
+  background-color: rgba(var(--primary-color), 0.1);
+}
+
+.todo-item:not(.completed):hover {
   background-color: rgba(var(--secondary-accent-color), 0.2);
 }
 
-.todo-list > li:hover .checkbox,
-.todo-list > li:hover .blank-checkbox {
-  fill: rgba(var(--accent-color))
+.todo-item:not(.completed):hover .checkbox,
+.todo-item:not(.completed):hover .blank-checkbox {
+  fill: rgb(var(--accent-color));
 }
 
 .todo-content {
@@ -180,9 +187,13 @@ h1 {
   fill: rgb(var(--red-color));
 }
 
-.completed {
-  text-decoration: line-through;
-}
-
-/* COMPLETED STYLING */
 /* ANIMATIONS */
+
+@keyframes deleting {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
