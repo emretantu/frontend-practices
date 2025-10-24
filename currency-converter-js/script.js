@@ -56,7 +56,7 @@ let multiplier;
 // FUNCTIONS
 
 const setMultiplier = function(currencies) {
-  let newMultiplier = currencies[baseCurrency.value][targetCurrency.value];
+  let newMultiplier = Math.round(currencies[baseCurrency.value][targetCurrency.value]*100)/100;
   baseInput.value = 1;
   targetInput.value = newMultiplier;
   exchangeRate.innerHTML = `1 ${baseCurrency.value} = ${newMultiplier} ${targetCurrency.value}`;
@@ -87,7 +87,7 @@ const setLocalStorage = function() {
   localStorage.setItem("targetCurrency", targetCurrency.value);
 }
 
-const getLocalStorage = function () {
+const getLocalStorage = function() {
   const localBaseCurrency = localStorage.getItem("baseCurrency");
   const localTargetCurrency = localStorage.getItem("targetCurrency");
   if (localBaseCurrency && localTargetCurrency) {
@@ -96,6 +96,19 @@ const getLocalStorage = function () {
     return true;
   }
   return false;
+}
+
+const initializeApp = function() {
+    if(!getLocalStorage()) {
+      setLocalStorage();
+    }
+    multiplier = setMultiplier(currencies);
+    baseInput.disabled = false;
+    targetInput.disabled = false;
+    swapButton.disabled = false;
+    baseCurrency.disabled = false;
+    targetCurrency.disabled = false;
+    
 }
 
 // FETCHING OFFLINE DATA
@@ -129,16 +142,9 @@ fetch("./offline-data.json")
       return acc;
     }, {});
     // Initialize app
-    if(!getLocalStorage()) {
-      setLocalStorage();
-    }
-    multiplier = setMultiplier(finalData);
-    baseInput.disabled = false;
-    targetInput.disabled = false;
-    swapButton.disabled = false;
-    baseCurrency.disabled = false;
-    targetCurrency.disabled = false;
+    
     currencies = finalData;
+    initializeApp();
   });
 
 // INTERACTIONS
@@ -146,6 +152,7 @@ fetch("./offline-data.json")
 currencyConverterForm.addEventListener("submit", e => {
   e.preventDefault();
   swapCurrencies();
+  setLocalStorage();
 })
 
 baseCurrency.addEventListener("change", () => {
