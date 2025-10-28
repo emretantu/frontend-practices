@@ -1,0 +1,121 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+html {
+  height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background: linear-gradient(to bottom right, rgb(179, 137, 255), rgb(253, 152, 255));
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+
+h1, .exchange-rate {
+  text-align: center;
+}
+
+.currency-converter-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  border-radius: 0.4rem;
+  padding: 1rem 2rem;
+}
+
+.currency-converter-form > div {
+  position: relative;
+  display: flex;
+  border-radius: 100px;
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+.currency-converter-form > div > * {
+  padding: 0.4rem;
+  border-radius: 100px;
+  border: 1px solid black;
+  background-color: transparent;
+  outline: none;
+  font-size: 1rem;
+}
+
+.currency-converter-form input[type=number] {
+  width: 12rem;
+  cursor: text;
+}
+
+.currency-converter-form select {
+  position: absolute;
+  right: 0;
+  height: 100%;
+  cursor: pointer;
+}
+
+#swap {
+  display: inline-flex;
+  justify-content: center;
+  background: none;
+  border: none;
+  padding: 0.5rem;
+  aspect-ratio: 1;
+  border-radius: 100%;
+  cursor: pointer;
+  transition: all;
+}
+
+#swap:hover,
+.currency-converter-form > div:hover {
+  background-color: rgba(255, 255, 255, 0.25);
+}
+
+#swap,
+.currency-converter-form > div {
+  transition: background-color 0.2s;
+}
+
+#swap > svg {
+  width: 1.5rem;
+}
+
+@media screen and (max-width: 35rem) {
+  html {
+    font-size: 0.8rem;
+  }
+}
+
+@media screen and (max-width: 30rem) {
+  html {
+    font-size: 1rem;
+  }
+  .currency-converter-form {
+    flex-direction: column;
+    gap: 0;
+  }
+  .currency-converter-form input[type=number] {
+    width: 15rem;
+  }
+}
