@@ -56,10 +56,11 @@ let multiplier;
 // FUNCTIONS
 
 const setMultiplier = function(currencies) {
-  let newMultiplier = Math.round(currencies[baseCurrency.value][targetCurrency.value]*100)/100;
+  let newMultiplier = currencies[baseCurrency.value][targetCurrency.value];
+  let roundedNewMultiplier = Math.round(newMultiplier * 100) / 100;
   baseInput.value = 1;
-  targetInput.value = newMultiplier;
-  exchangeRate.innerHTML = `1 ${baseCurrency.value} = ${newMultiplier} ${targetCurrency.value}`;
+  targetInput.value = roundedNewMultiplier;
+  exchangeRate.innerHTML = `1 ${baseCurrency.value} = ${roundedNewMultiplier} ${targetCurrency.value}`;
   return newMultiplier;
 }
 
