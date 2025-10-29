@@ -152,6 +152,9 @@ fetch("./offline-data.json")
 
 currencyConverterForm.addEventListener("submit", e => {
   e.preventDefault();
+})
+
+swapButton.addEventListener("click", e => {
   swapCurrencies();
   setLocalStorage();
 })
