@@ -192,7 +192,7 @@ const main = async function() {
   setOptionsFromCurrencies(Object.keys(currencies));
   const local = getLocalCurrencies();
   if(!local) {
-    setApp("USD", "EUR");
+    setApp(defaultBase, defaultTarget);
   } else {
     setApp(local.localBaseCurrency, local.localTargetCurrency);
   }
