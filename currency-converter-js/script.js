@@ -12,26 +12,31 @@ let currencies; // {"STR": {name: "STR", pluralName: "STR", decimalDigits: INT} 
 let online = false;
 const defaultBase = "USD";
 const defaultTarget = "EUR";
+let apikey;
 
 // FETCHING OFFLINE DATA
 
 const fetchOfflineCurrencies = async function() {
-  let currencies = await fetch("./offline-currencies.json")
-  currencies = await currencies.json();
-  currencies = currencies.data;
-  currencies = Object.entries(currencies);
-  currencies = currencies.reduce((acc, currency) => {
-    acc[currency[0]] = {
-      name: currency[1]["name"],
-      namePlural: currency[1]["name_plural"],
-      decimalDigits: currency[1]["decimal_digits"]
-    }
-    return acc;
-  }, {})
-  return currencies;
+  try {
+    let currencies = await fetch("./offline-currencies.json");
+    currencies = await currencies.json();
+    currencies = currencies.data;
+    currencies = Object.entries(currencies);
+    currencies = currencies.reduce((acc, currency) => {
+      acc[currency[0]] = {
+        name: currency[1]["name"],
+        namePlural: currency[1]["name_plural"],
+        decimalDigits: currency[1]["decimal_digits"]
+      }
+      return acc;
+    }, {})
+    return currencies;
+  } catch (error) {
+    console.log(error);
+  }
 }
 
-const fetchOfflineData = async function(base="USD", target="EUR") {
+const fetchOfflineData = async function(base=defaultBase, target=defaultTarget) {
   try {
     let offlineData = await fetch("./offline-data.json");
     offlineData = await offlineData.json();
@@ -48,6 +53,61 @@ const fetchOfflineData = async function(base="USD", target="EUR") {
     };
   } catch (error) {
     console.log(error)
+  }
+}
+
+// FETCHING ONLINE DATA
+
+const fetchCurrencies = async function() {
+  try {
+    let currencies = await fetch(
+      "https://api.freecurrencyapi.com/v1/currencies",
+      {
+        method: "GET",
+        headers: {
+          apikey: apikey
+        }
+      }
+    );
+    currencies = await currencies.json();
+    currencies = currencies.data;
+    currencies = Object.entries(currencies);
+    currencies = currencies.reduce((acc, currency) => {
+      acc[currency[0]] = {
+        name: currency[1]["name"],
+        namePlural: currency[1]["name_plural"],
+        decimalDigits: currency[1]["decimal_digits"]
+      }
+      return acc;
+    }, {})
+    return currencies;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+const fetchData = async function(base=defaultBase, target=defaultTarget) {
+  try {
+    let data = await fetch(
+      `https://api.freecurrencyapi.com/v1/latest?base_currency=${base}&currencies=${target}`,
+      {
+        method: "GET",
+        headers: {
+          apikey: apikey
+        }
+      }
+    );
+    if(!data.ok) {
+      throw new Error("Invalid values!");
+    }
+    data = await data.json();
+    return {
+      base: base,
+      target: target,
+      multiplier: data["data"][target]
+    }
+  } catch (error) {
+    console.log(error);
   }
 }
 
@@ -84,13 +144,15 @@ const setAppFromData = function(data, currencies) {
 }
 
 const setApp = async function(base, target) {
+  disableApp();
   if (online) {
-    // TO BE IMPLEMENT
+    data = await fetchData(base, target);
   } else {
     data = await fetchOfflineData(base, target);
   }
   setAppFromData(data, currencies);
   setLocalCurrencies(base, target);
+  initializeApp();
 }
 
 const setCurrencyLists = function(baseElements, targetElements) {
@@ -151,6 +213,14 @@ const initializeApp = function() {
     targetCurrency.disabled = false;
 }
 
+const disableApp = function() {
+    baseInput.disabled = true;
+    targetInput.disabled = true;
+    swapButton.disabled = true;
+    baseCurrency.disabled = true;
+    targetCurrency.disabled = true;
+}
+
 // INTERACTIONS
 
 currencyConverterForm.addEventListener("submit", e => {
@@ -188,13 +258,18 @@ targetInput.addEventListener("keyup", (e) => {
 // MAIN
 
 const main = async function() {
-  currencies = await fetchOfflineCurrencies();
+  disableApp();
+  if (online) {
+    currencies = await fetchCurrencies();
+  } else {
+    currencies = await fetchOfflineCurrencies();
+  }
   setOptionsFromCurrencies(Object.keys(currencies));
   const local = getLocalCurrencies();
   if(!local) {
-    setApp(defaultBase, defaultTarget);
+    await setApp(defaultBase, defaultTarget);
   } else {
-    setApp(local.localBaseCurrency, local.localTargetCurrency);
+    await setApp(local.localBaseCurrency, local.localTargetCurrency);
   }
   initializeApp();
 }
