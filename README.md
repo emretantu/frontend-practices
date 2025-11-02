@@ -4,11 +4,11 @@
 
 Welcome to this repository! Here you'll find a collection of small but detailed frontend web development practices.
 
-[Live Demo](https://emretantu.github.io/frontend-practices/)
+<a href="https://emretantu.github.io/frontend-practices/" target="_blank">Live Demo</a>
 
 **Technologies:** HTML, CSS, JavaScript, React
 
-Some of these practices are entirely my own creations, not based on any specific design reference—for instance, the todo list. For these, I made all decisions regarding both functionality and design. Others are inspired by external sources, such as [frontendmentor.io](https://www.frontendmentor.io/).
+Some of these practices are entirely my own creations, not based on any specific design reference—for instance, the todo list. For these, I made all decisions regarding both functionality and design. Others are inspired by external sources, such as <a href="https://frontendmentor.io" target="_blank">frontendmentor.io</a>
 
 Each project folder includes its own README with references, technologies used, and the aspects of design and functionality I focused on.
 
@@ -24,11 +24,11 @@ If you're looking for small projects to experiment with and build your skills, f
 
 Bu repoda frontend web geliştirme alanında küçük ama detaylı pratikler bulabilirsiniz.
 
-[Canlı Demo](https://emretantu.github.io/frontend-practices/)
+<a href="https://emretantu.github.io/frontend-practices/" target="_blank">Canlı Demo</a>
 
 **Teknolojiler:** HTML, CSS, JavaScript, React
 
-Bazı pratikler tamamen kendi uydurmalarımdır, örneğin todo list gibi. Bu projelerde tasarım ve işlevler tamamen benim kararlarımla ilerledi. Bazıları ise belirli kaynaklardan alınmıştır, örneğin [frontendmentor.io](https://www.frontendmentor.io/).
+Bazı pratikler tamamen kendi uydurmalarımdır, örneğin todo list gibi. Bu projelerde tasarım ve işlevler tamamen benim kararlarımla ilerledi. Bazıları ise belirli kaynaklardan alınmıştır, örneğin <a href="https://frontendmentor.io" target="_blank">frontendmentor.io</a>.
 
 Her projenin klasöründeki README dosyalarında referanslar, kullanılan teknolojiler ve tasarım ile işlevler noktasında nelere odaklandığım yer alıyor.
 
