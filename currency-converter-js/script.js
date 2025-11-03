@@ -12,7 +12,7 @@ let currencies; // {"STR": {name: "STR", pluralName: "STR", decimalDigits: INT} 
 let online = false;
 const defaultBase = "USD";
 const defaultTarget = "EUR";
-let apikey;
+let apikey = "";
 
 // FETCHING OFFLINE DATA
 
@@ -69,6 +69,9 @@ const fetchCurrencies = async function() {
         }
       }
     );
+    if(!currencies.ok) {
+      throw new Error("Invalid values!");
+    }
     currencies = await currencies.json();
     currencies = currencies.data;
     currencies = Object.entries(currencies);
@@ -255,9 +258,117 @@ targetInput.addEventListener("keyup", (e) => {
   }
 });
 
+// Online Components
+
+const openModalButton = document.querySelector(".app-mode");
+const dialog = document.querySelector("dialog");
+const apikeyForm = document.querySelector("#apikey-form");
+const statusStr = document.querySelector("#status");
+const toggleButton = document.querySelector("#online");
+const apikeyInput = document.querySelector("#apikey");
+const warning = document.querySelector(".warning");
+
+const fetchStatus = async function() {
+  try {
+    let status = await fetch(
+      "https://api.freecurrencyapi.com/v1/status",
+      {
+        method: "GET",
+        headers: {
+          apikey: apikey
+        }
+      }
+    );
+    if(!status.ok) {
+      throw new Error("Invalid values!");
+    }
+    status = await status.json();
+    status = status["quotas"]["month"];
+    return status;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+const setStatusOffline = function() {
+  statusStr.innerHTML = "Offline";
+  toggleButton.checked = false;
+  openModalButton.classList.add("offline");
+  online = false;
+}
+
+const setStatusWaiting = function() {
+  setStatusOffline();
+  statusStr.innerHTML = "Waiting response...";
+}
+
+const setStatusOnline = function() {
+  statusStr.innerHTML = "Online";
+  toggleButton.checked = true;
+  openModalButton.classList.remove("offline");
+  online = true;
+}
+
+const setOnlineMode = async function() {
+  setStatusWaiting();
+  apikey = apikeyInput.value;
+  let response = await fetchStatus();
+
+  if (response) {
+    setStatusOnline();
+    startApp();
+  } else {
+    setStatusOffline();
+    startApp();
+    apikey = "";
+    apikeyInput.value = "";
+    warning.style.display = "block";
+    dialog.showModal();
+  }
+}
+
+openModalButton.addEventListener("click", (e) => {
+
+  if(e.target.closest("label") && apikey) {
+    if(online) {
+      setStatusOffline();
+      startApp();
+    } else {
+      setOnlineMode();
+    }
+  } else {
+    dialog.showModal();
+  }
+
+});
+
+apikeyForm.addEventListener("submit", async () => {
+  dialog.close(); // In any case
+  setOnlineMode();
+});
+
+apikeyInput.addEventListener("input", () => {
+  warning.style.display = "none";
+});
+
+dialog.addEventListener("click", e => {
+  
+  const dialogRect = dialog.getBoundingClientRect();
+  const isInContent =
+    e.clientX >= dialogRect.left &&
+    e.clientX <= dialogRect.right &&
+    e.clientY >= dialogRect.top &&
+    e.clientY <= dialogRect.bottom;
+
+  if (!isInContent) {
+    dialog.close();
+  }
+
+});
+
 // MAIN
 
-const main = async function() {
+const startApp = async function() {
   disableApp();
   if (online) {
     currencies = await fetchCurrencies();
@@ -274,4 +385,4 @@ const main = async function() {
   initializeApp();
 }
 
-main();
+startApp();

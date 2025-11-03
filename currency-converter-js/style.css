@@ -1,3 +1,10 @@
+:root {
+  --border: 1px solid black;
+  --border-radius: 1000px;
+  --field-bg-color: rgba(255, 255, 255, 0.15);
+  --field-bg-hover-color: rgba(255, 255, 255, 0.25);
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -50,14 +57,14 @@ h1, .exchange-rate {
 .currency-converter-form > div {
   position: relative;
   display: flex;
-  border-radius: 100px;
-  background-color: rgba(255, 255, 255, 0.15);
+  border-radius: var(--border-radius);
+  background-color: var(--field-bg-color);
 }
 
 .currency-converter-form > div > * {
   padding: 0.4rem;
-  border-radius: 100px;
-  border: 1px solid black;
+  border-radius: var(--border-radius);
+  border: var(--border);
   background-color: transparent;
   outline: none;
   font-size: 1rem;
@@ -89,7 +96,7 @@ h1, .exchange-rate {
 
 #swap:hover,
 .currency-converter-form > div:hover {
-  background-color: rgba(255, 255, 255, 0.25);
+  background-color: var(--field-bg-hover-color);
 }
 
 #swap,
@@ -118,4 +125,143 @@ h1, .exchange-rate {
   .currency-converter-form input[type=number] {
     width: 15rem;
   }
+}
+
+/* Online Components */
+
+.app-mode {
+  position: fixed;
+  bottom: 4rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4em;
+  border: var(--border);
+  border-radius: var(--border-radius);
+  padding: 0.4em 1em;
+  cursor: pointer;
+  background-color: var(--field-bg-color);
+}
+
+.app-mode:hover {
+  background-color: var(--field-bg-hover-color);
+}
+
+.app-mode.offline {
+  border-color: rgb(60, 60, 60);
+}
+
+.app-mode.offline > #status {
+  color: rgb(100, 100, 100);
+}
+
+.toggle {
+  --toggle-width: 2.6em;
+  --toggle-height: 1.5em;
+  --toggle-padding: 0.1em;
+  --toggle-button-size: calc(var(--toggle-height) - calc(var(--toggle-padding) * 2));
+  --toggle-animation-duration: 200ms;
+  --toggle-bg-clr: rgb(0, 0, 0, 0.2);
+  --toggle-btn-clr: rgb(60, 60, 60);
+  --toggle-active-btn-clr: rgb(25, 25, 25);
+
+  width: var(--toggle-width);
+  height: var(--toggle-height);
+  border-radius: 100px;
+  background-color: var(--toggle-bg-clr);
+  position: relative;
+  cursor: pointer;
+}
+
+.toggle::before {
+  content: "";
+  position: absolute;
+  left: var(--toggle-padding);
+  bottom: var(--toggle-padding);
+  background-color: var(--toggle-btn-clr);
+  width: var(--toggle-button-size);
+  height: var(--toggle-button-size);
+  border-radius: 100%;
+  transition: var(--toggle-animation-duration) background-color, var(--toggle-animation-duration) transform;
+} 
+
+/* #online:checked + .toggle {
+  background-color: rgb(0, 0, 0, 0.2);
+} */
+
+#online:checked + .toggle::before {
+  transform: translateX( calc(calc(var(--toggle-width) - var(--toggle-button-size)) - calc(var(--toggle-padding) * 2)) );
+  background-color: var(--toggle-active-btn-clr);
+}
+
+#online {
+  display: none;
+}
+
+#status {
+  cursor: pointer;
+}
+
+
+
+dialog {
+  width: 80vw;
+  max-width: 25em;
+  padding: 1rem;
+  margin: auto;
+  border: var(--border);
+  border-radius: 1em;
+  background-color: var(--field-bg-color);
+}
+
+dialog::backdrop {
+  background-color: rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(8px);
+}
+
+dialog > .container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6em;
+}
+
+dialog * {
+  font-size: 1rem;
+}
+
+dialog form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6em;
+}
+
+#apikey, .ok-button {
+  padding: 0.2em 0.6em;
+  border: var(--border);
+  border-radius: var(--border-radius);
+  background-color: var(--field-bg-color);
+  outline: none;
+}
+
+#apikey {
+  width: 50%;
+}
+
+.ok-button {
+  cursor: pointer;
+}
+
+#apikey:hover, .ok-button:hover {
+  background-color: var(--field-bg-hover-color);
+}
+
+dialog p {
+  text-align: center;
+  color: rgb(30, 30, 30);
+}
+
+.warning {
+  color: rgb(193, 14, 14);
+  font-size: 0.7em;
+  display: none;
 }

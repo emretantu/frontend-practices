@@ -8,7 +8,9 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
   <h1>Currency Converter</h1>
+
   <form class="currency-converter-form">
     <div class="base-currency">
       <input type="number" id="base-input" step="any" disabled>
@@ -30,9 +32,27 @@
       </select>
     </div>
   </form>
+
   <p class="exchange-rate">Loading...</p>
-  <section class="modal">
-    
-  </section>
+
+  <div class="app-mode offline">
+    <p id="status">Offline</p>
+    <input type="checkbox" id="online" disabled>
+    <label for="online" class="toggle"></label>
+  </div>
+  
+  <dialog>
+    <div class="container">
+      <form method="dialog" id="apikey-form">
+        <label for="apikey">API Key:</label>
+        <input type="text" id="apikey" autofocus="false">
+        <button type="submit" class="ok-button">OK</button>
+      </form>
+      <p class="warning">Something went wrong!</p>
+      <p>Powered by <a href="https://freecurrencyapi.com" target="_blank">Free Currency API</a></p>
+      <p>You can get your API key for free and paste it here.</p>
+    </div>
+  </dialog>
+
 </body>
 </html>
