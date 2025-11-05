@@ -311,13 +311,14 @@ const setStatusOnline = function() {
 
 const setOnlineMode = async function() {
   setStatusWaiting();
-  apikey = apikeyInput.value;
   let response = await fetchStatus();
 
   if (response) {
+    setLocalAPIKey(apikey); // DAHA MAKUL BİR YERE ÇEKİLEBİLİR Mİ? VAR OLMASINA RAĞMEN SÜREKLİ ÇALIŞACAK
     setStatusOnline();
     startApp();
   } else {
+    removeLocalAPIKey();
     setStatusOffline();
     startApp();
     apikey = "";
@@ -334,7 +335,7 @@ openModalButton.addEventListener("click", (e) => {
       setStatusOffline();
       startApp();
     } else {
-      setOnlineMode();
+      setOnlineMode(apikey);
     }
   } else {
     dialog.showModal();
@@ -344,6 +345,7 @@ openModalButton.addEventListener("click", (e) => {
 
 apikeyForm.addEventListener("submit", async () => {
   dialog.close(); // In any case
+  apikey = apikeyInput.value;
   setOnlineMode();
 });
 
@@ -366,6 +368,20 @@ dialog.addEventListener("click", e => {
 
 });
 
+// Local API Key
+
+const getLocalAPIKey = function() {
+  return localStorage.getItem("localAPIKey");
+}
+
+const setLocalAPIKey = function(value) {
+  return localStorage.setItem("localAPIKey", value);
+}
+
+const removeLocalAPIKey = function() {
+  return localStorage.removeItem("localAPIKey");
+}
+
 // MAIN
 
 const startApp = async function() {
@@ -385,4 +401,14 @@ const startApp = async function() {
   initializeApp();
 }
 
-startApp();
+const main = async function() {
+  const localAPIKey = getLocalAPIKey();
+  if(localAPIKey) {
+    apikey = localAPIKey;
+    setOnlineMode();
+  } else {
+    startApp();
+  }
+}
+
+main();
