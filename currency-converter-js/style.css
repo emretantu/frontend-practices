@@ -265,3 +265,19 @@ dialog p {
   font-size: 0.7em;
   display: none;
 }
+
+a:link {
+  color: rgb(89, 0, 255);
+}
+
+a:visited {
+  color: rgb(89, 0, 255);
+}
+
+a:hover {
+  color: rgb(75, 0, 214);
+}
+
+a:active {
+  color: rgb(111, 0, 238);
+}
