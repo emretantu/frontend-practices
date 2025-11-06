@@ -294,6 +294,7 @@ const setStatusOffline = function() {
   statusStr.innerHTML = "Offline";
   toggleButton.checked = false;
   openModalButton.classList.add("offline");
+  showQuota(false);
   online = false;
 }
 
@@ -306,6 +307,7 @@ const setStatusOnline = function() {
   statusStr.innerHTML = "Online";
   toggleButton.checked = true;
   openModalButton.classList.remove("offline");
+  showQuota(true);
   online = true;
 }
 
@@ -314,7 +316,7 @@ const setOnlineMode = async function() {
   let response = await fetchStatus();
 
   if (response) {
-    setLocalAPIKey(apikey); // DAHA MAKUL BİR YERE ÇEKİLEBİLİR Mİ? VAR OLMASINA RAĞMEN SÜREKLİ ÇALIŞACAK
+    setLocalAPIKey(apikey);
     setStatusOnline();
     startApp();
   } else {
@@ -338,6 +340,9 @@ openModalButton.addEventListener("click", (e) => {
       setOnlineMode(apikey);
     }
   } else {
+    if(online) {
+      setQuota();
+    }
     dialog.showModal();
   }
 
@@ -380,6 +385,22 @@ const setLocalAPIKey = function(value) {
 
 const removeLocalAPIKey = function() {
   return localStorage.removeItem("localAPIKey");
+}
+
+// Status
+const quota = document.querySelector("#quota");
+
+const setQuota = async function() {
+  let result = await fetchStatus();
+  quota.innerHTML = `Quota: ${result.used}/${result.total}`; 
+}
+
+const showQuota = function(show) {
+  if(show) {
+    quota.style.display = "block";
+  } else {
+    quota.style.display = "none";
+  }
 }
 
 // MAIN
