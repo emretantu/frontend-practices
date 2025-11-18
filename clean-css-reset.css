@@ -56,3 +56,15 @@ textarea:not([rows]) {
 :target {
   scroll-margin-block: 5ex;
 }
+
+/* Font Declaration */
+
+@font-face {
+  font-family: "NAME";
+  src: url("") format("woff2"),
+       url("") format("woff"),
+       url("") format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
