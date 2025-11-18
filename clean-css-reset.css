@@ -23,6 +23,7 @@ ol[role='list'] {
 body {
   min-height: 100vh;
   line-height: 1.5;
+  margin: 0;
 }
 
 h1, h2, h3, h4,
