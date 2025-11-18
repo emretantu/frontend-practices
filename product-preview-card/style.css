@@ -56,3 +56,62 @@ textarea:not([rows]) {
 :target {
   scroll-margin-block: 5ex;
 }
+
+/* Style Guide */
+
+@font-face {
+  font-family: "Fraunces";
+  src: url("font/Fraunces/Fraunces-VariableFont_SOFT-WONK-opsz-wght.ttf") format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Fraunces";
+  src: url("font/Fraunces/Fraunces-Italic-VariableFont_SOFT-WONK-opsz-wght.ttf") format('truetype');
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Montserrat";
+  src: url("font/Montserrat/Montserrat-VariableFont_wght.ttf") format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Montserrat";
+  src: url("font/Montserrat/Montserrat-Italic-VariableFont_wght.ttf") format('truetype');
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+:root {
+  --clr-black: 212 21% 14%;
+  --clr-gray: 228 12% 48%;
+  --clr-cream: 30 39% 92%;
+  --clr-white: 0 0% 100%;
+  --clr-green-500: 158 36% 37%;
+  --clr-green-700: 158 42% 18%;
+  --spacing-500: 2.5rem;
+  --spacing-400: 2rem;
+  --spacing-300: 1.5rem;
+  --spacing-200: 1rem;
+  --spacing-100: 0.5rem;
+  --spacing-50: 0.25rem;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.875rem;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Fraunces";
+  font-weight: bold;
+}
