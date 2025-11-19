@@ -2,6 +2,7 @@
 
 *, *::before, *::after {
   box-sizing: border-box;
+  margin: 0;
 }
 
 html {
@@ -109,9 +110,86 @@ textarea:not([rows]) {
 body {
   font-family: "Montserrat", sans-serif;
   font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0;
+  color: hsl(var(--clr-gray));
+  margin: var(--spacing-100);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: hsl(var(--clr-cream));
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: "Fraunces";
   font-weight: bold;
+}
+
+/* Product Preview Card Component Styling */
+
+.product-card {
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--spacing-100);
+  overflow: hidden;
+  background-color: hsl(var(--clr-white));
+}
+
+.product-card__info {
+  padding: var(--spacing-400);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-300);
+}
+
+.product-card__category {
+  text-transform: uppercase;
+  letter-spacing: 0.41em;
+  line-height: 1.2;
+}
+
+.product-card__description {
+  line-height: 1.6;
+}
+
+/* Text Preset 1 */
+h3, .product-card__price > ins {
+  font-family: "Fraunces";
+  font-weight: bold;
+  line-height: 1;
+  font-size: 2rem;
+}
+
+h3 {
+  color: hsl(var(--clr-black));
+}
+
+.product-card__price {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-200);
+}
+
+.product-card__price > ins {
+  color: hsl(var(--clr-green-500));
+  text-decoration: none;
+}
+
+.product-card__price > del {
+  font-size: 0.8125rem;
+  line-height: 1.2;
+  text-decoration: line-through;
+}
+
+.atc-button {
+  color: hsl(var(--clr-white));
+  background-color: hsl(var(--clr-green-500));
+  padding: 1rem 2rem;
+  text-align: center;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+.atc-button:hover {
+  background-color: hsl(var(--clr-green-700));
 }
