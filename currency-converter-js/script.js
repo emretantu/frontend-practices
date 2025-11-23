@@ -159,6 +159,8 @@ const setApp = async function(base, target) {
 }
 
 const setCurrencyLists = function(baseElements, targetElements) {
+  baseCurrency.innerHTML = "";
+  targetCurrency.innerHTML = "";
   baseCurrency.append(...baseElements);
   targetCurrency.append(...targetElements);
 }
@@ -425,6 +427,7 @@ const startApp = async function() {
 const main = async function() {
   const localAPIKey = getLocalAPIKey();
   if(localAPIKey) {
+    apikeyInput.value = localAPIKey;
     apikey = localAPIKey;
     setOnlineMode();
   } else {
