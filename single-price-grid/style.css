@@ -58,3 +58,82 @@ textarea:not([rows]) {
 :target {
   scroll-margin-block: 5ex;
 }
+
+/* Design System */
+
+@font-face {
+  font-family: "Karla";
+  src: url("fonts/Karla-VariableFont_wght.ttf") format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Karla";
+  src: url("fonts/Karla-Italic-VariableFont_wght.ttf") format('truetype');
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+:root {
+  --clr-white: 0 0% 0%;
+  --clr-gray: 218 22% 67%;
+  --clr-teal-100: 204 43% 93%;
+  --clr-teal-400: 179 48% 52%;
+  --clr-teal-500: 179 62% 43%;
+  --clr-green-400: 71 73% 54%;
+
+  --spacing-0: 0rem;
+  --spacing-100: 0.5rem;
+  --spacing-200: 1rem;
+  --spacing-300: 1.5rem;
+  --spacing-500: 2.5rem;
+}
+
+body {
+  font-family: "Karla", sans-serif;
+}
+
+.text-preset-1 {
+  font-weight: bold;
+  font-size: 2rem;
+  line-height: 1.115;
+  letter-spacing: -0.025em;
+}
+
+.text-preset-2 {
+  font-weight: bold;
+  font-size: 1.5rem;
+  line-height: 1.115;
+  letter-spacing: -0.016em;
+}
+
+.text-preset-3 {
+  font-weight: bold;
+  font-size: 1.125rem;
+  line-height: 1.115;
+  letter-spacing: -0.016em;
+}
+
+.text-preset-4-bold {
+  font-weight: bold;
+  font-size: 1rem;
+  line-height: 1.145;
+  letter-spacing: -0.016em;
+}
+
+.text-preset-4 {
+  font-weight: normal;
+  font-size: 1rem;
+  line-height: 1.165;
+  letter-spacing: -0.032em;
+}
+
+.text-preset-4 {
+  font-weight: normal;
+  font-size: 0.875rem;
+  line-height: 1.145;
+  letter-spacing: 0;
+}
