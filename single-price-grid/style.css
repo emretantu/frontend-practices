@@ -191,6 +191,7 @@ body {
 
 .subscription {
   background-color: hsl(var(--clr-teal-500));
+  justify-content: space-between;
 }
 
 .pricing {
