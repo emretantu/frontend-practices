@@ -96,6 +96,9 @@ textarea:not([rows]) {
 body {
   font-family: "Karla", sans-serif;
   background-color: hsl(var(--clr-teal-100));
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .text-preset-1 {
@@ -147,7 +150,7 @@ body {
   margin: var(--spacing-400);
   border-radius: var(--spacing-100);
   overflow: hidden;
-  box-shadow: 0px 4px 4px hsl(0 0% 0% / 0.25);
+  box-shadow: 0px 10px 10px hsl(var(--clr-teal-500) / 0.1);
 }
 
 
@@ -226,4 +229,35 @@ body {
 
 .why-us-info {
   opacity: 0.75;
+}
+
+@media (min-width: 769px) {
+  .single-price {
+    max-width: 40rem;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: min-content min-content;
+    grid-template-areas:  "join join" 
+                          "subscription why-us";
+  }
+
+  .join {
+    grid-area: join;
+  }
+
+  .subscription {
+    grid-area: subscription;
+  }
+
+  .why-us {
+    grid-area: why-us;
+  }
+
+  .description > span {
+    display: block;
+  }
+
+  .subscription, .why-us {
+    padding: var(--spacing-500);
+  }
+
 }
