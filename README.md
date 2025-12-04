@@ -1,6 +1,6 @@
 # Frontend Practices
 
-![Tech Stack](https://img.shields.io/badge/Tech_Stack-%F0%9F%92%BB-555555)  ![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white) ![CSS3](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white) ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black) ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white) ![React](https://img.shields.io/badge/React-61DAFB?logo=react&logoColor=black)
+![Tech Stack](https://img.shields.io/badge/Tech_Stack-%F0%9F%92%BB-555555)  ![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white) ![CSS](https://img.shields.io/badge/CSS-639?logo=css&logoColor=fff) ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black) ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white) ![React](https://img.shields.io/badge/React-61DAFB?logo=react&logoColor=black)
 
 [![Live Demos](https://img.shields.io/badge/Live_Demos-6C63FF?style=for-the-badge)](https://emretantu.github.io/frontend-practices/)
 
